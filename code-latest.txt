@@ -1,0 +1,70 @@
+//Varoon Gupta
+//mar18
+//Assignment 7Q2
+//reads text file and outputs the number of numChar, numWords, and numParas
+//receives no input
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+
+public class v34gupta_A7Q2 {
+    public static void main(String[] args){
+
+
+        File file = new File("/Users/varoong/Desktop/Assignment7/A7Q2.txt");
+        //creates file object
+
+
+        int numWords=0;
+        int numChar=0;
+        int numParas=0;
+        //declares variables for number of words, characters, paragraphs
+        
+        try {
+            Scanner words = new Scanner(file);
+            Scanner paragra = new Scanner(file);
+            Scanner chara= new Scanner(file);
+            //sets up scanners for words characters and paragraphs
+
+            while (chara.hasNextLine()) {
+                numChar= numChar + chara.next().length();
+            }
+            //while loop for number of characters
+
+            while (words.hasNext()) {
+                words.next();
+                numWords++;
+
+            }
+            //While loop for number of words
+
+
+            while (paragra.hasNextLine()) {
+                if (paragra.nextLine().isEmpty()){
+                    numParas++;
+                }
+            }
+            //while loop for number of paragraphs
+
+
+        words.close();
+        paragra.close();
+        chara.close();
+
+        numParas++;
+        //since one paragraph is not considered
+
+
+        }
+        catch (FileNotFoundException e){
+        }
+
+        System.out.println("there are "+numWords+" words");
+        System.out.println("there are "+numChar+" characters");
+        System.out.println("there are "+numParas+" paragraphs");
+        //output three sentences stating number of words, characters, and paragraphs
+    }
+}
+
